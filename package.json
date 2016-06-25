@@ -8,5 +8,11 @@
         "url": "https://github.com/ClarisaD/crowdscribe"
     },
     "dependencies": {
+      "ejs": "^2.4.2",
+      "express": "^4.14.0",
+      "express-ejs-layouts": "^2.1.0",
+      "http": "0.0.0",
+      "method-override": "^2.3.6",
+      "mongoose": "^4.5.2"
     }
 }

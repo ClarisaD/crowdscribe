@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
     app.get('/login', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('users/login');
+        res.render('users/login', { message : req.flash('loginMessage')});
     });
 
     // process the login form
@@ -28,7 +28,7 @@ module.exports = function(app, passport) {
     app.get('/signup', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('users/signup');
+        res.render('users/signup', { message : req.flash('signupMessage')});
     });
 
     // process the signup form
@@ -52,6 +52,19 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    // process the signup form
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 };
 
 // route middleware to make sure a user is logged in

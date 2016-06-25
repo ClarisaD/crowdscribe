@@ -5,6 +5,7 @@ var bodyParser           = require('body-parser')
     , ejs                = require('ejs')
     , express            = require('express')
     , expressEjsLayouts  = require('express-ejs-layouts')
+    , flash              = require('connect-flash')
     , http               = require('http')
     , LocalStrategy      = require('passport-local')
     , mongoose           = require('mongoose')
@@ -15,13 +16,12 @@ var bodyParser           = require('body-parser')
 
 var app = express();
 mongoose.connect(dbConfig.dbUrl);
+require('./config/passport')(passport);
 
 // Settings for passport.
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
-require('./routes')(app, passport);
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -32,6 +32,9 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(flash());
+
+require('./routes')(app, passport);
 
 app.listen(8080, function () { // starts server. #randomass port.
   console.log('Server started & listening on port 8080, yo!');

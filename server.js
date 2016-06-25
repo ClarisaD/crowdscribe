@@ -4,8 +4,10 @@ var bodyParser           = require('body-parser')
     , express            = require('express')
     , expressEjsLayouts  = require('express-ejs-layouts')
     , http               = require('http')
+    , LocalStrategy      = require('passport-local')
     , mongoose           = require('mongoose')
-    , methodOverride     = require('method-override');
+    , methodOverride     = require('method-override')
+    , passport           = require('passport');
 
 var app = express();
 

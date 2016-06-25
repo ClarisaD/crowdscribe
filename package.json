@@ -1,0 +1,12 @@
+{
+    "name": "crowdscribe",
+    "version": "0.0.1",
+    "description": "Server for the crowdscribe prototype",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ClarisaD/crowdscribe"
+    },
+    "dependencies": {
+    }
+}

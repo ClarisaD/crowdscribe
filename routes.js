@@ -65,6 +65,21 @@ module.exports = function(app, passport) {
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+
+    // load summary page based on URL
+    app.get('/media', function(req, res) {
+        res.render('media/index', { url: req.query.url })
+    });
+
+    // get JSON showing requests for media given URL
+    app.get('/requests', function(req, res) {
+        var requestedURL = req.query.url,
+            numRequests = 0; // TODO query database here
+
+        res.json({  url: req.query.url,
+                    requests: numRequests
+                 })
+    })
 };
 
 // route middleware to make sure a user is logged in

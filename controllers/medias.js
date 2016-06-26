@@ -12,4 +12,4 @@ module.exports = function(app, passport) {
       res.json({ url      : req.query.url,
                  requests : numRequests });
   });
-}
+};

@@ -1,3 +1,8 @@
+var requestButton = document.getElementById("request-button"),
+	summaryButton = document.getElementById("summary-button"),
+	editButton = document.getElementById("edit-button"),
+	endorseButton = document.getElementById("endorse-button");
+
 document.addEventListener('DOMContentLoaded', function () {
 	chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
 	    var hostname = tabs[0].url;
@@ -24,8 +29,10 @@ var getJSON = function(url) {
 
 function loadData(tabURL) {
 
-	getJSON('http://localhost:8080/requests?url='+tabURL).then(function(data) {
-		document.getElementById("numRequests").innerHTML = data.requests;
+	getJSON('http://localhost:8080/media/json?url='+tabURL).then(function(data) {
+		document.getElementById("numRequests").innerHTML = data.numRequests;
+		document.getElementById("transcript").innerHTML = data.transcriptText;
+		document.getElementById("hidden-request-button").value = tabURL;
 	}, function(status) { //error detection....
 		alert('Something went wrong.');
 	});

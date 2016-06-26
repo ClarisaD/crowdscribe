@@ -11,7 +11,18 @@
 	<div id="main-container">
 		<div id="requests-container">
 			<span id="numRequests">7</span>
-			<span id="request-button-container"><button id="request-button">Request</button></span>
+			<span id="request-button-container">
+			 <form action="/request" method="post" name="requestForm">
+	        	<input type="hidden"
+	                class="form-control"
+	                name="request[url]"
+	                required 
+	                value="url goes here"
+	              	id="hidden-request-button"
+	                autofocus>
+					<button id="request-button" type="submit">Request</button>
+		     </form>
+			</span>
 		</div>
 
 		<div id="body-container">

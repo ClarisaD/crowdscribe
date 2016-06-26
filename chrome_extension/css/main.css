@@ -1,18 +1,13 @@
-#main-wrapper {
-	font-family: Helvetica, sans-serif;
-	padding: 1em;
-	color: white;
-	position: relative;
+body {
+	margin: 0;
+	padding: 0;
 }
 
-#main-container-transparent {
-	background: #333333;	
-	opacity: 0.7;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
+#main-wrapper {
+	font-family: Helvetica, sans-serif;
+	color: white;
+	background: #333;
+	position: relative;
 }
 
 #main-container {
@@ -22,22 +17,39 @@
 
 #requests-container {
 	text-align: center;
+	background: #f9a100;
+	padding: 1em;
+	text-transform: uppercase;
+}
+
+#numRequests {
+	margin-right: 20px;
+}
+
+#numRequests:after {
+	content: " Requests";
 }
 
 #request-button {
-	text-align: center;
+	text-align: right;
 }
 
 #body-container {
-
+	padding: 1em;
 }
 
 #transcript {
-	margin: 1em 0;
+	margin: 2em 0;
+}
+
+#edit-button {
+	background: #999;
+	color: white;
 }
 
 #summary-button {
 	text-align: center;
+	margin-top: 1em;
 }
 
 button {
@@ -48,4 +60,5 @@ button {
 	border-radius: 10px;
 	font-family: Helvetica, sans-serif;
 	font-weight: 600;
+	padding: 0.5em 1em;
 }

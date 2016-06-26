@@ -2,6 +2,8 @@ module.exports = function(app, passport) {
 
   var Media = require('../models/media.js');
 
+  // morgan is logger middleware. it shows
+  // stuff going on in the background.
   app.use(morgan('dev'));
 
   // load summary page based on URL.

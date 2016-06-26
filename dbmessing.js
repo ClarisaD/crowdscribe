@@ -18,12 +18,34 @@ console.log('starting')
 
 function tellMeAbout(url, callback) {
     // is this how the schema is meant to work?
+
+    // * So I don't think you can compare the media and url directly
+    // bc media is an object that contains a url value so
+    // if you wanna look for all requests containing the url that was
+    // passed into the function like you
+    // did here, you would have to compare via
+    // Request.find{ media.url: url }.
+    // but we actually have requests associated with media objs
+    // by their db id values, not by url. what if you had 2 urls
+    // that contained the same media that your wanted to contribute
+    // transcription or a summary to? by associating it by ids only,
+    // it's much more specific, if that makes sense? - Stan
+
+
     Request.find({media: url}, (err, requests) => {
         if (err) return callback(err);
+
         // (this is probably wrong in that mediaId is not the url?)
+        // - Yeah, you have to ping the db to get the mediaId. - Stan
+
         Transcript.find({mediaId: url}, (err, transcripts) => {
             if (err) return callback(err);
             let nTranscripts = transcripts.length;
+
+            // I don't quite understand what you're doing here.
+            // You are making an array that stores all the
+            // transcript objects for later referral? - Stan
+
             const transcriptInfo = new Map();
             transcripts.forEach(transcript => {
                 const transcriptId = transcript.mediaId + ',' + transcript.userId; // XXX or what?
@@ -57,7 +79,7 @@ if (0) {
     Transcript.find({mediaId: "42"}, function (err, transcripts) {
         if (err) return console.error(err);
         transcripts.forEach(t => {
-            console.log("got one", t); 
+            console.log("got one", t);
         });
     });
 } else {

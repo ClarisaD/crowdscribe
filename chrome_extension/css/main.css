@@ -1,0 +1,51 @@
+#main-wrapper {
+	font-family: Helvetica, sans-serif;
+	padding: 1em;
+	color: white;
+	position: relative;
+}
+
+#main-container-transparent {
+	background: #333333;	
+	opacity: 0.7;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#main-container {
+	width: 100%;
+	position: relative;
+}
+
+#requests-container {
+	text-align: center;
+}
+
+#request-button {
+	text-align: center;
+}
+
+#body-container {
+
+}
+
+#transcript {
+	margin: 1em 0;
+}
+
+#summary-button {
+	text-align: center;
+}
+
+button {
+	color: #333;
+	background: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	font-family: Helvetica, sans-serif;
+	font-weight: 600;
+}

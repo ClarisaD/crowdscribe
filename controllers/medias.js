@@ -8,6 +8,8 @@ module.exports = function(app, passport) {
 
   // load summary page based on URL.
   app.get('/', function (req, res) {
-      res.render('/media/index', { url: req.query.url })
+      res.render('/media/index', { url : req.query.url });
+      res.json({ url      : req.query.url,
+                 requests : numRequests });
   });
 }

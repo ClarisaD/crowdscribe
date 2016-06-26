@@ -10,6 +10,8 @@
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab"
-  ]
+    "tabs",
+    "http://localhost:8080/requests*"
+  ],
+  "content_security_policy": "script-src 'self' http://localhost:8080/requests*; object-src 'self'"
 }

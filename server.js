@@ -35,7 +35,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
 // define routes
-var passportRoutes  = require('./routes')(app, passport);
+var passportRoutes  = require('./routes.js')(app, passport);
 var mediaController = require('./controllers/medias.js');
 app.use('/media', mediaController);
 

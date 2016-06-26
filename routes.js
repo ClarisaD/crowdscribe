@@ -76,11 +76,19 @@ module.exports = function(app, passport) {
         var requestedURL = req.query.url,
             numRequests = 0;
             // requestedMediaId = Media.find({ url: requestedURL }).id,
-            // numRequests = Request.count({ mediaId: requestedMediaId }); // TODO query database here
 
-        res.json({  url: req.query.url,
-                    requests: numRequests
-                 })
+            Media.findOne({ 'url' : requestedURL }, function (err, foundMedia) {
+              if (err) {
+                console.log('There was an error finding by media URL! ' + err);
+              } else {
+                var mediaID = foundMedia._id;
+                var count   = foundMedia.count;
+
+                res.json({ url      : req.query.url,
+                           requests : numRequests });
+              }
+            });
+            // numRequests = Request.count({ mediaId: requestedMediaId }); // TODO query database here
     })
 };
 

@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
     , Schema = mongoose.Schema;
 
 var mediaSchema = Schema({
-  url      : { type : String, default : mongoose.required },
+  url      : { type: String, default : mongoose.required },
   id       : String,
   type     : String,
   parentId : String

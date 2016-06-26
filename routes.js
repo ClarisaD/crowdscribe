@@ -65,26 +65,6 @@ module.exports = function(app, passport) {
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
-
-    // get JSON showing requests for media given URL
-    app.get('/requests', function(req, res) {
-        var requestedURL = req.query.url,
-            numRequests = 0;
-            // requestedMediaId = Media.find({ url: requestedURL }).id,
-
-            Media.findOne({ 'url' : requestedURL }, function (err, foundMedia) {
-              if (err) {
-                console.log('There was an error finding by media URL! ' + err);
-              } else {
-                var mediaID = foundMedia._id;
-                var count   = foundMedia.count;
-
-                res.json({ url      : req.query.url,
-                           requests : numRequests });
-              }
-            });
-            // numRequests = Request.count({ mediaId: requestedMediaId }); // TODO query database here
-    })
 };
 
 // route middleware to make sure a user is logged in

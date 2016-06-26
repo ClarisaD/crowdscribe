@@ -16,7 +16,7 @@ router.get('/json', function (req, res) {
   // TODO: return real data here
   res.json({ url      : req.query.url,
            numRequests : 0,
-           transcriptText: "This is the dummy transcript",
+           transcriptText: "There are no transcripts on this page at this time. Be the first to add one!",
            transcriptScore: 100 });
 
 });

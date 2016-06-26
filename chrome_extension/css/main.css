@@ -60,8 +60,10 @@ button {
 #endorse-button{
 	background-image: url("../img/endorse.png");
 	background-repeat: no-repeat;
-    width: 42px;
-    height: 42px;
+    width: 21px;
+    height: 22px;
+    margin-left: 2px;
+    padding-left: 1px;
 }
 
 #summary-button {

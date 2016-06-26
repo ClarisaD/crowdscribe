@@ -38,9 +38,8 @@ var router = express.Router();
       if (err) {
         res.send(err);
       } else {
-        // render the media page, passing in the original
-        // url of the media.
-        res.render('media/index', { 'url' : newRequestURL });
+        // render the media json given a URL
+        res.status(302);
       }
     });
   });

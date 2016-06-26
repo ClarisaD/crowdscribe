@@ -31,6 +31,18 @@ var passportRoutes    = require('./routes')(app, passport);
 var mediaController   = require('./controllers/medias');
 var requestController = require('./controllers/requests');
 
+// shows what's in req.whatevers.
+app.use(function (req, res, next) {
+  console.log("======== REQ START =========");
+  console.log("REQ DOT BODY\n", req.body);
+  console.log("REQ DOT PARAMS\n", req.params);
+  console.log("REQ DOT SESSION\n", req.session);
+  console.log("REQ DOT USER\n", req.user);
+  console.log("======== REQ END =========");
+  next();
+});
+
+
 app.use('/media', mediaController);
 app.use('/request', requestController);
 app.use(express.static('./static')); // adds a static area for images and stuff.

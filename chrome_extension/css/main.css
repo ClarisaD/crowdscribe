@@ -52,6 +52,11 @@ form {
 	text-align: right;
 }
 
+.requested#request-button {
+	background: green;
+	color: white;
+}
+
 #body-container {
 	padding: 1em;
 }

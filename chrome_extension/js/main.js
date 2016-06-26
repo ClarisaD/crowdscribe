@@ -1,3 +1,5 @@
+'use strict';
+
 var requestButton = document.getElementById("request-button"),
 	summaryButton = document.getElementById("summary-button"),
 	editButton = document.getElementById("edit-button"),

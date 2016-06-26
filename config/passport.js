@@ -1,5 +1,7 @@
 // config/passport.js
 
+'use strict';
+
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 

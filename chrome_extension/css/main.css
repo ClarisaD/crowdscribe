@@ -36,6 +36,10 @@ button {
     font-family: Arial, sans-serif;
 }
 
+form {
+	display: inline-block;
+}
+
 #numRequests {
 	margin-right: 20px;
 }

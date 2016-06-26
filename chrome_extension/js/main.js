@@ -37,4 +37,8 @@ function loadData(tabURL) {
 		alert('Something went wrong.');
 	});
 
+	summaryButton.addEventListener('click', function() {
+		chrome.tabs.create({ url: 'http://localhost:8080/media?url='+tabURL });
+	})
+
 }

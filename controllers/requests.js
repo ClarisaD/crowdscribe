@@ -25,12 +25,12 @@ var router = express.Router();
 
   // endpoint that saves new request.
   router.post('/', function (req, res) {
-    var newMedia    = new Request(req.body.request); // grabs media object created by user.
-    var newMediaURL = req.body.url; //
-    var newMediaID  = newMedia._id;
+    var newRequest    = new Request(req.body.request); // grabs media object created by user.
+    var newRequestURL = req.body.url; //
+    var newRequestID  = newRequest._id;
 
     // saves new media object.
-    newMedia.save(function (err, media) {
+    newRequest.save(function (err, media) {
       if (err) {
         res.send(err);
       } else {

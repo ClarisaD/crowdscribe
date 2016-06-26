@@ -1,5 +1,5 @@
 var express = require('express')
-    , Media = require('../models/request.js');
+    , Request = require('../models/request.js');
 
 var router = express.Router();
 
@@ -21,6 +21,10 @@ var router = express.Router();
           }
         });
         // numRequests = Request.count({ mediaId: requestedMediaId }); // TODO query here
+  });
+
+  router.get('/new', function (req, res) {
+    res.render('request/new');
   });
 
   // endpoint that saves new request.

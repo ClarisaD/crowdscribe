@@ -1,3 +1,31 @@
 <% title = 'Create a New Request' %>
 
-<form action="/"
+<div id="main-wrapper">
+	<div id="main-container">
+		<div id="requests-container">
+			<span id="numRequests">7</span>
+			<span id="request-button-container">
+			 <form action="/request" method="post" name="requestForm">
+	        	<input type="hidden"
+	                class="form-control"
+	                name="request[url]"
+	                required
+	                value="url goes here"
+	              	id="hidden-request-button"
+	                autofocus>
+					<button id="request-button" type="submit">Request</button>
+		     </form>
+			</span>
+		</div>
+
+		<div id="body-container">
+			<div id="transcript-container">
+				<h3>Transcript:</h3>
+				<div id="transcript">This is a sample transcript of a video.</div>
+				<button id="edit-button">Edit</button>
+				<button id="endorse-button"></button>
+			</div>
+			<div id="summary-button-container"><button id="summary-button">See Summary</button></div>
+		</div>
+	</div>
+</div>

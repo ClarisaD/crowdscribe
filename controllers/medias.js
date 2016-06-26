@@ -6,8 +6,6 @@ var router = express.Router();
 // load summary page based on URL.
 router.get('/', function (req, res) {
   res.render('media/index', { url : req.query.url });
-  res.json({ url      : req.query.url,
-             requests : numRequests });
 });
 
 router.get('/json', function (req, res) {
@@ -28,6 +26,12 @@ router.get('/json', function (req, res) {
       }
       Media.findOne({url: url}, climbTheFamilyTree);
   }
+
+  // TODO: return real data here
+  res.json({ url      : req.query.url,
+           numRequests : 0,
+           transcriptText: "This is the dummy transcript",
+           transcriptScore: 100 });
 
 });
 

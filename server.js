@@ -15,6 +15,9 @@ var bodyParser           = require('body-parser')
     , session            = require('express-session');
 
 var app = express();
+var router = express.Router();
+var server = http.createServer(app);
+
 mongoose.connect(dbConfig.dbUrl);
 require('./config/passport')(passport);
 
@@ -22,6 +25,14 @@ require('./config/passport')(passport);
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+
+// define routes
+var passportRoutes    = require('./routes')(app, passport);
+var mediaController   = require('./controllers/medias');
+var requestController = require('./controllers/requests');
+
+app.use('/media', mediaController);
+app.use('/request', requestController);
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -34,13 +45,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
-// define routes
-var passportRoutes    = require('./routes.js')(app, passport);
-var mediaController   = require('./controllers/medias.js');
-var requestController = require('./controllers/requests.js');
-
-app.use('/media', mediaController);
-app.use('/request', requestController);
+// CATCHALL ROUTE (404)
+app.use(function (req, res, next) {
+  res.send("Something went wrong. Couldn't find what you were looking for.");
+  res.end();
+});
 
 app.listen(8080, function () { // starts server. #randomass port.
   console.log('Server started & listening on port 8080, yo!');

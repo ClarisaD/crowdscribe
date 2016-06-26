@@ -1,11 +1,13 @@
-module.exports = function(app, passport) {
-
-  var Media = require('../models/media.js');
+var express = require('express')
+    , Media = require('../models/media.js');
+var router = express.Router();
 
   // load summary page based on URL.
-  app.get('/', function (req, res) {
-      res.render('/media/index', { url : req.query.url });
-      res.json({ url      : req.query.url,
-                 requests : numRequests });
+  router.get('/', function (req, res) {
+    res.send('hi!')
+      // res.render(302, 'media/index', { url : req.query.url });
+      // res.json({ url      : req.query.url,
+      //            requests : numRequests });
   });
-};
+
+  module.exports = router;

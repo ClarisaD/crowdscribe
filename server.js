@@ -21,6 +21,10 @@ var server = http.createServer(app);
 mongoose.connect(dbConfig.dbUrl);
 require('./config/passport')(passport);
 
+app.use(bodyParser.urlencoded({
+  extended: true
+})); // get information from html forms
+
 // Settings for passport.
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -42,15 +46,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 app.use('/media', mediaController);
 app.use('/request', requestController);
 app.use(express.static('./static')); // adds a static area for images and stuff.
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({
-  extended: true
-})); // get information from html forms
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport

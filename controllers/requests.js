@@ -40,7 +40,7 @@ var router = express.Router();
       } else {
         // render the media page, passing in the original
         // url of the media.
-        res.render(302, '/media', { 'url' : newRequestURL });
+        res.render('media/index', { 'url' : newRequestURL });
       }
     });
   });

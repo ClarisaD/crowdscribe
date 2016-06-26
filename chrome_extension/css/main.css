@@ -28,9 +28,12 @@ button {
 
 #requests-container {
 	text-align: center;
-	background: #f9a100;
-	padding: 1em;
-	text-transform: uppercase;
+    background: #999;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial;
 }
 
 #numRequests {

@@ -74,7 +74,9 @@ module.exports = function(app, passport) {
     // get JSON showing requests for media given URL
     app.get('/requests', function(req, res) {
         var requestedURL = req.query.url,
-            numRequests = 0; // TODO query database here
+            numRequests = 0;
+            // requestedMediaId = Media.find({ url: requestedURL }).id,
+            // numRequests = Request.count({ mediaId: requestedMediaId }); // TODO query database here
 
         res.json({  url: req.query.url,
                     requests: numRequests

@@ -3,7 +3,7 @@ var mongoose    = require('mongoose')
 
 var requestSchema = Schema({
   user         : String,
-  media        : { type : String, default : required },
+  mediaId        : { type : String, default : required },
   time         : { type : Date  , default : Date.now }
 });
 

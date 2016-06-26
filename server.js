@@ -33,7 +33,7 @@ var requestController = require('./controllers/requests');
 
 app.use('/media', mediaController);
 app.use('/request', requestController);
-app.use(express.static('./public'));
+app.use(express.static('./static'));
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms

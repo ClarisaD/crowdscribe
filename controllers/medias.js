@@ -5,13 +5,9 @@ var router = express.Router();
 
 // load summary page based on URL.
 router.get('/', function (req, res) {
-  if (err) {
-    res.send(err);
-  } else {
-    res.render('media/index', { url : req.query.url });
-    res.json({ url      : req.query.url,
-               requests : numRequests });
-  }
+  res.render('media/index', { url : req.query.url });
+  res.json({ url      : req.query.url,
+             requests : numRequests });
 });
 
 router.get('/json', function (req, res) {

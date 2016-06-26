@@ -45,6 +45,7 @@ function tellMeAbout(url, callback) {
     findProgenitor(url, (err, media) => {
         if (err) return callback(err);
         if (media === null) return callback(null, {
+            url: url,
             numRequests: 0,
             transcriptText: null,
             transcriptScore: 0,
@@ -63,7 +64,9 @@ function tellMeAbout(url, callback) {
                         --nRemainingTranscripts;
                         if (nRemainingTranscripts === 0) {
                             const pick = pickATranscript(transcriptInfo);
-                            callback(null, {numRequests, transcriptText: pick.transcriptText, transcriptScore: pick.transcriptScore});
+                            callback(null, {url, numRequests,
+                                            transcriptText: pick.transcriptText,
+                                            transcriptScore: pick.transcriptScore});
                         }
                     });
                 });

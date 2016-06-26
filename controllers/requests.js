@@ -1,9 +1,15 @@
 'use strict';
 
-var express = require('express')
+var bodyParser = require('body-parser')
+    , express = require('express')
     , Request = require('../models/request.js');
 
 var router = express.Router();
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+router.use(bodyParser.json())
 
   // get JSON showing requests for media given URL.
   router.get('/', function(req, res) {
@@ -30,8 +36,11 @@ var router = express.Router();
   });
 
   // endpoint that saves new request.
-  router.post('/', function (req, res) {
-    var newRequest    = new Request(req.body.request); // grabs media object created by user.
+  router.post('/', jsonParser, function (req, res) {
+    var reqParams     = req.body.request;
+    var newRequest    = new Request(reqParams); // grabs media object created by user.
+    console.log(reqParams);
+    console.log(newRequest);
     var newRequestURL = req.body.url; //
     var newRequestID  = newRequest._id;
 

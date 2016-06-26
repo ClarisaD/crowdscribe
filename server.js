@@ -17,6 +17,7 @@ var bodyParser           = require('body-parser')
 var app = express();
 var router = express.Router();
 var server = http.createServer(app);
+var jsonParser = bodyParser.json();
 
 mongoose.connect(dbConfig.dbUrl);
 require('./config/passport')(passport);
@@ -24,11 +25,7 @@ require('./config/passport')(passport);
 app.use(bodyParser.urlencoded({
   extended: true
 })); // get information from html forms
-
-// Settings for passport.
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+app.use(bodyParser.json());
 
 // define routes
 var passportRoutes    = require('./routes')(app, passport);

@@ -79,18 +79,29 @@ function findProgenitor(url, callback) {
   Media.findOne({url: url}, climbTheFamilyTree);
 }
 
-// Return text and score of the 'best' transcript in the map.
+// Return text and score of a transcript in the map. We usually want
+// the 'best' one, but sometimes another, so that other transcripts
+// get a chance to get rated and pass the current leader.
 function pickATranscript(transcriptMap) {
-  var bestScore, bestText;
-  transcriptMap.forEach((id, value) => {
-    const transcript = value.transcript;
-    const feedbacks = value.feedbacks;
-    const score = totalScore(feedbacks);
-    if (bestScore === void 0 || bestScore < score) {
-      bestScore = score;
-      bestText = transcript.content;
-    }
-  });
+  const pairs = Array.from(transcriptMap.values());
+  let bestScore, bestText;
+  // A simple 'epsilon-greedy' strategy: 1/5 of the time, pick
+  // uniformly at random; the rest of the time pick the 'best'.
+  if (Math.random() < 0.2) {
+    const i = Math.floor(Math.random() * pairs.length);
+    bestText = pairs[i].transcript.content;
+    bestScore = totalScore(pairs[i].feedbacks);
+  } else {
+    pairs.forEach(value => {
+      const transcript = value.transcript;
+      const feedbacks = value.feedbacks;
+      const score = totalScore(feedbacks);
+      if (bestScore === void 0 || bestScore < score) {
+        bestScore = score;
+        bestText = transcript.content;
+      }
+    });
+  }
   return {transcriptText: bestText,
           transcriptScore: bestScore};
 }

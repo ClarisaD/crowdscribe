@@ -17,8 +17,8 @@ To run the server:
 To run the client:
 
   * Use Chrome
-  * XXX how to install the extension?
-  * navigate to a page of interest, and ... XXX
+  * To install the extension for dev purposes, go to `chrome://extensions/` and load the root directory of this repository via "Load unpacked extension." Make sure the "Developer mode" checkbox is checked.
+  * Navigate to a page of interest, and try it out!
 
 ## Collaborators
 

@@ -34,21 +34,6 @@ function findProgenitor(url, callback) {
 }
 
 function tellMeAbout(url, callback) {
-    // is this how the schema is meant to work?
-
-    // * So I don't think you can compare the media and url directly
-    // bc media is an object that contains a url value so
-    // if you wanna look for all requests containing the url that was
-    // passed into the function like you
-    // did here, you would have to compare via
-    // Request.find{ media.url: url }.
-    // but we actually have requests associated with media objs
-    // by their db id values, not by url. what if you had 2 urls
-    // that contained the same media that your wanted to contribute
-    // transcription or a summary to? by associating it by ids only,
-    // it's much more specific, if that makes sense? - Stan
-
-
     Request.find({media: url}, (err, requests) => {
         if (err) return callback(err);
 

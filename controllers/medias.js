@@ -14,13 +14,13 @@ router.get('/', function (req, res) {
 
 router.get('/json', function (req, res) {
   var url = req.query.url;
-
-  // TODO: return real data here
-  res.json({ url      : req.query.url,
-           numRequests : 0,
-           transcriptText: "This is the dummy transcript",
-           transcriptScore: 100 });
-
+  tellMeAbout(url, urlInfo => {
+    // TODO: return real data here from urlInfo
+    res.json({ url      : url,
+               numRequests : 0,
+               transcriptText: "This is the dummy transcript",
+               transcriptScore: 100 });
+  });
 });
 
 function findProgenitor(url, callback) {

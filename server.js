@@ -34,7 +34,10 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
-require('./routes')(app, passport);
+// define routes
+var passportRoutes  = require('./routes')(app, passport);
+var mediaController = require('./controllers/medias.js');
+app.use('/media', mediaController);
 
 app.listen(8080, function () { // starts server. #randomass port.
   console.log('Server started & listening on port 8080, yo!');

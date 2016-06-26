@@ -66,11 +66,6 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // load summary page based on URL
-    app.get('/media', function(req, res) {
-        res.render('media/index', { url: req.query.url })
-    });
-
     // get JSON showing requests for media given URL
     app.get('/requests', function(req, res) {
         var requestedURL = req.query.url,

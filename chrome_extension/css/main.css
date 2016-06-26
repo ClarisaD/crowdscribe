@@ -46,6 +46,9 @@ body {
 	background: #999;
 	color: white;
 }
+#endorse-button{
+	background-image: url("../img/endorse.png");
+}
 
 #summary-button {
 	text-align: center;

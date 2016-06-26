@@ -3,6 +3,17 @@ body {
 	padding: 0;
 }
 
+button {
+	color: #333;
+	background: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	font-family: Helvetica, sans-serif;
+	font-weight: 600;
+	padding: 0.5em 1em;
+}
+
 #main-wrapper {
 	font-family: Helvetica, sans-serif;
 	color: white;
@@ -17,9 +28,12 @@ body {
 
 #requests-container {
 	text-align: center;
-	background: #f9a100;
-	padding: 1em;
-	text-transform: uppercase;
+    background: #999;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial;
 }
 
 #numRequests {
@@ -48,6 +62,11 @@ body {
 }
 #endorse-button{
 	background-image: url("../img/endorse.png");
+	background-repeat: no-repeat;
+    width: 21px;
+    height: 22px;
+    margin-left: 2px;
+    padding-left: 1px;
 }
 
 #summary-button {
@@ -55,13 +74,3 @@ body {
 	margin-top: 1em;
 }
 
-button {
-	color: #333;
-	background: white;
-	text-align: center;
-	border: none;
-	border-radius: 10px;
-	font-family: Helvetica, sans-serif;
-	font-weight: 600;
-	padding: 0.5em 1em;
-}

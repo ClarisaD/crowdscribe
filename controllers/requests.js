@@ -1,8 +1,10 @@
-module.exports = function (app) {
-  var Request = require('../models/request.js');
+var express = require('express')
+    , Media = require('../models/request.js');
+
+var router = express.Router();
 
   // get JSON showing requests for media given URL.
-app.get('/', function(req, res) {
+  router.get('/', function(req, res) {
     var requestedURL = req.query.url,
         numRequests = 0;
         // requestedMediaId = Media.find({ url: requestedURL }).id,
@@ -22,7 +24,7 @@ app.get('/', function(req, res) {
   });
 
   // endpoint that saves new request.
-  app.post('/', function (req, res) {
+  router.post('/', function (req, res) {
     var newMedia    = new Request(req.body.request); // grabs media object created by user.
     var newMediaURL = req.body.url; //
     var newMediaID  = newMedia._id;
@@ -38,4 +40,5 @@ app.get('/', function(req, res) {
       }
     });
   });
-};
+
+module.exports = router;

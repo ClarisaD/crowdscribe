@@ -1,7 +1,9 @@
 'use strict';
 
-var express = require('express')
-    , Media = require('../models/media.js');
+var express      = require('express')
+    , Feedback   = require('../models/feedback.js')
+    , Media      = require('../models/media.js')
+    , Transcript = require('../models/transcript.js');
 
 var router = express.Router();
 
